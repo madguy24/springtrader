@@ -63,7 +63,7 @@ pipeline {
          unstash 'build'
          sh "skaffold deploy -a image.json -n ${env.productionNamespace}"
          stageMessage "Successfully deployed to production:\nspringtrader-${env.product}.${env.productionDomain}/spring-nanotrader-web/"
-      }
+       }
      }
    }
   }
