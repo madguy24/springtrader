@@ -12,7 +12,7 @@ pipeline {
          sh "rm image.json"
   		  }
   		}
-	} 
+   } 
    stage("Deploy to Staging") {
     agent {
       label "lead-toolchain-skaffold"
@@ -29,14 +29,14 @@ pipeline {
          unstash 'build'
          sh "skaffold deploy -a image.json -n ${env.stagingNamespace}"
          stageMessage "Successfully deployed to staging:\nspringtrader-${env.product}.${env.stagingDomain}/spring-nanotrader-web/"
-       }
-      }
-     }
+        }
+           }
+   }
    stage ('Manual Ready Check') {
      agent none
      when {
        branch 'master'
-   }
+   	}
      options {
        timeout(time: 30, unit: 'MINUTES')
      }
